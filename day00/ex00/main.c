@@ -1,88 +1,166 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <string.h>
+#include <stdio.h> //printf, scanf, ...
+#include <string.h> //memcpy, strlen, ...
+#include <unistd.h> //fork, write, sleep...
+#include <stdlib.h> //malloc, free, exit...
 
-#define BUF_SIZE 1024
+#include "header.h"
 
-struct s_art {
-	char	*name;
-	int		price;
-};
-
-struct s_art	*split_line(struct s_art *array_art, char *line)
+int main(void)
 {
-	int i;
-	int j;
-	char *price;
+	struct s_art **arts;
 
-	i = 0;
-	j = 0;
-	printf("%s\n", line);
-	while (line[i] && !strncmp(line + i, " => ", 4))
-	{
-		array_art->name[j] = line[i];
-		i++;
-		j++;
-	}
-	printf("I'm here\n");
-	array_art->name[j] = '\0';
-	printf("%s\n", &line[i]);
-	i = i + 4;
-	j = 0;
-	price = (char *)malloc(sizeof(char) * strlen(array_art->name) + 1);
-	while (line[i] && line[i] != '\n')
-	{
-		price[j] = line[i];
-		i++;
-		j++;
-	}
-	price[j] = '\0';
-	array_art->price = atoi(price);
-	return (array_art);
-}
+	arts = getArts(); //parsing the file and put it in an array
 
-int		parse_file(char *name)
-{
-	FILE			*fp;
-	size_t			len;
-	int				ret;
-	int				i;
-	char			*line;
-	struct s_art	**array_art;
+	/*-------------------
+	launch your test here
+	--------------------*/
+	printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(arts, "Guernica"));
+	printf("price for the art \'%s\' is %d\n", "Plate (page 25) from HOMMAGE À RIMBAUD", searchPrice(arts, "Plate (page 25) from HOMMAGE À RIMBAUD"));
+	printf("price for the art \'%s\' is %d\n", "Mona Lisa", searchPrice(arts, "Mona Lisa"));
+	printf("price for the art \'%s\' is %d\n", "INTERIOR - WHITE MOUNTAINS", searchPrice(arts, "INTERIOR - WHITE MOUNTAINS"));
+	printf("should return -1 for \'%s\' is %d\n", "Girl with Peaches", searchPrice(arts, "Girl with Peaches"));
+	printf("should return -1 for \'%s\' is %d\n", "We don't have this art", searchPrice(arts, "We don't have this art"));
 
-	i = -1;
-	len = 0;
-	line = NULL;
-	fp = fopen(name, "r");
-	if (!fp)
-	{
-		printf("No such file or directory\n");
-		exit(1);
-	}
-	array_art = (struct s_art **)malloc(sizeof(struct s_art *));
-	while ((ret = getline(&line, &len, fp)) > 0)
-	{
-		i++;
-		array_art[i] = split_line(array_art[i], line);
-		printf("%s\n", array_art[i]->name);
-		printf("%d\n", array_art[i]->price);
-		exit(0);
-	}
 	return (0);
 }
 
-int main(int argc, char *argv[])
+//don't go further :)
+
+#define FILENAME "art.txt"
+
+char	*readFile(void)
 {
-	if (argc == 2)
-	{
-		parse_file(argv[1]);
+	char *fcontent = NULL;
+	int size = 0;
+	FILE *fp;
+
+	if (NULL == (fp = fopen(FILENAME, "r")))
+		return (NULL);
+	fseek(fp, 0L, SEEK_END);
+	size = ftell(fp);
+	rewind(fp);
+	if (NULL == (fcontent = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	fread(fcontent, 1, size, fp);
+	fclose(fp);
+	return (fcontent);
+}
+
+char	**split(char *str, char *delimiter){
+	char **tab;
+	int count;
+	int a;
+	int pos;
+	int len_delimiter;
+	int len_substring;
+
+	len_delimiter = strlen(delimiter);
+	len_substring = 0;
+	count = 0;
+	//first counting the number of substring
+	for (int i = 0; str[i]; i++){
+		if (strncmp(str + i, delimiter, len_delimiter) == 0) {
+			if (len_substring > 0){
+				len_substring = 0;
+				count += 1;
+			}
+			i += len_delimiter - 1;
+		} else {
+			len_substring += 1;
+		}
 	}
+	if (len_substring > 0){
+		count += 1;
+	}
+	if (NULL == (tab = malloc(sizeof(char *) * (count + 1))))
+		return (NULL);
+	tab[(a = 0)] = NULL;
+	len_substring = 0;
+	pos = 0;
+	//then get the substring :)
+	for (int i = 0; str[i]; i++){
+		if (strncmp(str + i, delimiter, len_delimiter) == 0) {
+			if (len_substring > 0){
+				tab[(a++)] = strndup(str + pos, len_substring);
+				len_substring = 0;
+			}
+			i += len_delimiter - 1;
+			pos = i + 1;
+		} else {
+			len_substring += 1;
+		}
+	}
+	if (len_substring > 0){
+		tab[(a++)] = strndup(str + pos, len_substring);
+	}
+	tab[a] = NULL;
+	return (tab);
+}
+
+void	getArts_leave(void){
+	dprintf(STDERR_FILENO, "failed to load the file.\n");
+	exit(0);
+}
+
+struct s_art *getArts_createStruct( char *line ){
+	struct s_art *piece;
+	char **tab;
+
+	if (NULL == (piece = malloc(sizeof(struct s_art))))
+		return (NULL);
+	if (NULL == (tab = split(line, " => ")))
+		return (NULL);
+	if (tab[0] != NULL)
+		piece->name = strdup(tab[0]);
 	else
-	{
-		printf("usage: a.out [file_name]\n");
-		return (1);
+		return (NULL);
+	if (tab[1] != NULL)
+		piece->price = atoi(tab[1]);
+	else
+		return (NULL);
+
+	for (int i = 0; tab[i] ; i++){
+		free(tab[i]);
+	} free(tab);
+
+	return (piece);
+}
+
+struct s_art **getArts(void)
+{
+	char *file;
+	struct s_art **art;
+	int art_size;
+	int	art_index;
+
+	dprintf(STDOUT_FILENO, "loading the file... ");
+	if (NULL == (file = readFile()))
+		getArts_leave();
+
+	//creating the array
+	art_size = 0;
+	for (int i = 0; file[i]; i++){
+		if (file[i] == '\n')
+			art_size += 1;
 	}
-	return (0);
+	if (NULL == (art = malloc(sizeof(struct s_art *) * (art_size + 1))))
+		getArts_leave();
+	art[(art_index = 0)] = NULL;
+
+	//filling the array
+	char **tab = split(file, "\n");
+	struct s_art *tmp;
+	for(int i = 0; tab[i]; i++){
+		tmp = getArts_createStruct(strdup(tab[i]));
+		if (tmp)
+			art[(art_index++)] = tmp; 
+	}
+	art[(art_index)] = NULL;
+
+	for (int i = 0; tab[i] ; i++){
+		free(tab[i]);
+	} free(tab);
+
+	dprintf(STDOUT_FILENO, "finish!\n");
+	return (art);
 }
