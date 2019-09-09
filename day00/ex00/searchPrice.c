@@ -17,8 +17,6 @@ int searchPrice(struct s_art **arts, char *name)
 	int i;
 
 	i = 0;
-	if (!arts)
-		return (-1);
 	while (arts[i])
 	{
 		if (!strcmp(arts[i]->name, name))

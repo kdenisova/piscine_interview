@@ -1,2 +1,2 @@
-O(N) time, with N the number of arts.
+O(n) time, with n the number of arts.
 O(1) space.
