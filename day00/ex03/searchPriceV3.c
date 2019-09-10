@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "header.h"
-#include <stdio.h>
 
 size_t hash(char *input)
 {
@@ -50,19 +49,25 @@ struct s_dict *dictInit(int capacity)
 int	dictInsert(struct s_dict *dict, char *key, struct s_art *value)
 {
     int i;
+    struct s_item *current;
     
     i = hash(key) % dict->capacity;
-    if (!dict->items[i])
+    current = dict->items[i];
+    if (!current)
+    {
         dict->items[i] = (struct s_item *)malloc(sizeof(struct s_item));
+        current = dict->items[i];
+    }  
     else
     {
-        while (dict->items[i])
-            dict->items[i] = dict->items[i]->next;
-        dict->items[i] = (struct s_item *)malloc(sizeof(struct s_item));
+        while (current->next)
+            current = current->next;
+        current->next = (struct s_item *)malloc(sizeof(struct s_item));
+        current = current->next;
     }
-    dict->items[i]->key = key;
-    dict->items[i]->value = value;
-    dict->items[i]->next = NULL;
+    current->key = key;
+    current->value = value;
+    current->next = NULL;
     return (0);
 }
 
@@ -74,11 +79,7 @@ struct s_art *dictSearch(struct s_dict *dict, char *key)
     while (dict->items[i])
     {
         if (!strcmp(dict->items[i]->key, key))
-        {
-            printf("%s => %d\n", dict->items[i]->key, dict->items[i]->value->price);
-            return (dict->items[i]->value);
-        }
-            
+            return (dict->items[i]->value);  
         dict->items[i] = dict->items[i]->next;
     }
     return (NULL);

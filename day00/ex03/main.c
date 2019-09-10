@@ -23,10 +23,15 @@ int main(void)
     i = 0;
     while (i < capacity)
     {
-        dictInsert(dict, arts[i]->name, *arts);
+        dictInsert(dict, arts[i]->name, arts[i]);
 		i++;
     }
 	printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(dict, "Guernica"));
+	printf("price for the art \'%s\' is %d\n", "Plate (page 25) from HOMMAGE À RIMBAUD", searchPrice(dict, "Plate (page 25) from HOMMAGE À RIMBAUD"));
+	printf("price for the art \'%s\' is %d\n", "Mona Lisa", searchPrice(dict, "Mona Lisa"));
+	printf("price for the art \'%s\' is %d\n", "INTERIOR - WHITE MOUNTAINS", searchPrice(dict, "INTERIOR - WHITE MOUNTAINS"));
+	printf("should return -1 for \'%s\' is %d\n", "Girl with Peaches", searchPrice(dict, "Girl with Peaches"));
+	printf("should return -1 for \'%s\' is %d\n", "We don't have this art", searchPrice(dict, "We don't have this art"));
 	return (0);
 }
 

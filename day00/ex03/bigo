@@ -1,0 +1,2 @@
+O(n) time in the worst case, O(1) time in the best case (with minimun collision), with n the number of arts.
+O(n) space.
