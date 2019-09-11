@@ -2,29 +2,39 @@
 # define HEADER_H
 
 # include <stdlib.h>
-# include <string.h>
 # include <stdio.h>
+# include <string.h>
 
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_item {
-	int idx;
-	struct s_item *next;
-};
-
-struct s_stack {
-	struct s_item *item;
-};
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-struct s_stack *initStack();
-void push(struct s_stack *stack, int idx);
-int pop(struct s_stack *stack);
 
-char *console(void);
+// Tank
+
+struct s_elem {
+    int energy;
+    struct s_elem *next;
+};
+
+struct s_stack {
+    struct s_elem *elem;
+    int sum;
+};
+
+struct s_tank {
+    struct s_stack **stacks;
+    int n;
+};
+
+struct s_tank *initTank(void);
+
+void tankPush(struct s_tank *tank, int energy);
+
+int tankPop(struct s_tank *tank);
 
 /*--------------------------------
   ?? test function used in main
@@ -34,6 +44,6 @@ char *console(void);
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-char *ft_delline(char *line, int i, int len);
+
 
 #endif
