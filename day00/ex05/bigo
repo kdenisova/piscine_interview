@@ -1,0 +1,2 @@
+O(n) time, with n the length of book.
+O(n + m) space, with n the length of book and m the length of header

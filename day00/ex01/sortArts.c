@@ -22,17 +22,17 @@ int 	findSize(struct s_art **arts)
 	return (i);
 }
 
-int		partition(struct s_art **arts, int left, int right)
+int		partition(struct s_art **arts, int low, int high)
 {
 	int i;
 	int j;
 	char *piviot;
 	struct s_art *temp;
 
-	i = left;
-	j = left;
-	piviot = arts[right]->name;
-	while (j < right)
+	i = low;
+	j = low;
+	piviot = arts[high]->name;
+	while (j < high)
 	{
 		if (strcmp(arts[j]->name, piviot) < 0)
 		{
@@ -44,20 +44,21 @@ int		partition(struct s_art **arts, int left, int right)
 		j++;
 	}
 	temp = arts[i];
-	arts[i] = arts[right];
-	arts[right] = temp;
+	arts[i] = arts[high];
+	arts[high] = temp;
 	return (i);
 }
 
-void	quickSort(struct s_art **arts, int left, int right)
+void	quickSort(struct s_art **arts, int low, int high)
 {
-	int i;
+	int piviot;
 
-	if (left >= right)
-		return ;
-	i = partition(arts, left, right);
-	quickSort(arts, left, i - 1);
-	quickSort(arts, i + 1, right);
+	if (low < high)
+	{
+		piviot = partition(arts, low, high);
+		quickSort(arts, low, piviot - 1);
+		quickSort(arts, piviot + 1, high);
+	}
 }
 
 void	sortArts(struct s_art **arts)

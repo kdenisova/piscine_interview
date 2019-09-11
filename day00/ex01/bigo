@@ -1,2 +1,2 @@
-O(NlogN) time, with N the number of arts.
+O(N) time in the best case, O(NlogN) in average case, O(N^2) in the worst case, with N the number of arts.
 O(1) space.

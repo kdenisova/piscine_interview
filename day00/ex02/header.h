@@ -25,7 +25,6 @@ int searchPrice(struct s_art **arts, int n, char *name);
   --------------------------------*/
 
 struct s_art **getArts(int *n);
-int 	findSize(struct s_art **arts);
 
 
 /*--------------------------------

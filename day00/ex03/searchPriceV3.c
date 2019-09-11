@@ -23,7 +23,7 @@ size_t hash(char *input)
     len = strlen(input);
     while (input[i])
     {
-        h = h + (unsigned)input[i] % len;
+        h = h + (unsigned)input[i] % 101;
         i++;
     }
     return (h);
@@ -56,6 +56,8 @@ int	dictInsert(struct s_dict *dict, char *key, struct s_art *value)
     if (!current)
     {
         dict->items[i] = (struct s_item *)malloc(sizeof(struct s_item));
+        if (!dict->items[i])
+            return (0);
         current = dict->items[i];
     }  
     else
@@ -63,24 +65,28 @@ int	dictInsert(struct s_dict *dict, char *key, struct s_art *value)
         while (current->next)
             current = current->next;
         current->next = (struct s_item *)malloc(sizeof(struct s_item));
+        if (!current->next)
+            return (0);
         current = current->next;
     }
     current->key = key;
     current->value = value;
     current->next = NULL;
-    return (0);
+    return (1);
 }
 
 struct s_art *dictSearch(struct s_dict *dict, char *key)
 {
     int i;
+    struct s_item *current;
 
     i = hash(key) % dict->capacity;
-    while (dict->items[i])
+    current = dict->items[i];
+    while (current)
     {
-        if (!strcmp(dict->items[i]->key, key))
-            return (dict->items[i]->value);  
-        dict->items[i] = dict->items[i]->next;
+        if (!strcmp(current->key, key))
+            return (current->value);  
+        current = current->next;
     }
     return (NULL);
 }

@@ -15,8 +15,10 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	printf("%d\n", howManyJesus(book, "God"));
-
+	printf("God - %d\n", howManyJesus(book, "God"));
+	printf("Lord - %d\n", howManyJesus(book, "Lord"));
+	printf("LORD - %d\n", howManyJesus(book, "LORD"));
+	printf("Bird - %d\n", howManyJesus(book, "Bird"));
 	return (0);
 }
 

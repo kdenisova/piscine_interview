@@ -1,0 +1,2 @@
+O(n) time, with n the size of a linked list.
+O(1) space.

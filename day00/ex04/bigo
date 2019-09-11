@@ -1,0 +1,2 @@
+O(n) time in best case and O(n*m) in the worst case, with n the length of text and m the length of pattern.
+O(1) space.

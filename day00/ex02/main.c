@@ -14,7 +14,6 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	n = findSize(arts);
 	printf("price for the art \'%s\' is %d\n", "Guernica", searchPrice(arts, n, "Guernica"));
 	printf("price for the art \'%s\' is %d\n", "Plate (page 25) from HOMMAGE À RIMBAUD", searchPrice(arts, n, "Plate (page 25) from HOMMAGE À RIMBAUD"));
 	printf("price for the art \'%s\' is %d\n", "Mona Lisa", searchPrice(arts, n, "Mona Lisa"));
@@ -25,16 +24,6 @@ int main(void)
 }
 
 // Function used for the test
-int 	findSize(struct s_art **arts)
-{
-	int i;
-
-	i = 0;
-	while (arts[i])
-		i++;
-	return (i);
-}
-
 // Don't go further :)
 
 #define FILENAME "art.txt"
