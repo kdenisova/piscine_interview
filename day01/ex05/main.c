@@ -29,18 +29,21 @@ int main(void)
 	tankPush(tank, 100);
 	printf("push 100 energy in %d stack\n", tank->n);
 	tankPush(tank, 90);
-	printf("push 100 energy in %d stack\n", tank->n);
+	printf("push  90 energy in %d stack\n", tank->n);
 	tankPush(tank, 100);
 	printf("push 100 energy in %d stack\n", tank->n);
 	tankPush(tank, 50);
-	printf("push 50  energy in %d stack\n", tank->n);
+	printf("push  50 energy in %d stack\n", tank->n);
+	tankPush(tank, 100);
+	printf("push 100 energy in %d stack\n", tank->n);
 	tankPush(tank, 100);
 	printf("push 100 energy in %d stack\n", tank->n);
 
-	printf("\npop %d energy, active stack %d\n", tankPop(tank), tank->n);
-	printf("pop %d energy, active stack %d\n", tankPop(tank), tank->n);
-	printf("pop %d energy, active stack %d\n", tankPop(tank), tank->n);
-	printf("pop %d energy, active stack %d\n", tankPop(tank), tank->n);
+	printf("\npop %3d energy, active stack %d\n", tankPop(tank), tank->n);
+	printf("pop %3d energy, active stack %d\n", tankPop(tank), tank->n);
+	printf("pop %3d energy, active stack %d\n", tankPop(tank), tank->n);
+	printf("pop %3d energy, active stack %d\n", tankPop(tank), tank->n);
+	printf("pop %3d energy, active stack %d\n", tankPop(tank), tank->n);
 	return (0);
 }
 

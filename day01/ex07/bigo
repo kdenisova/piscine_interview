@@ -1,2 +1,2 @@
-O(n) time.
+O(n) time, with n the size of list.
 O(n) space for a new list.

@@ -1,2 +1,2 @@
 O(n) time, with n the size of a linked list.
-O(1) space.
+O(n) space, with n the depth of recursion.

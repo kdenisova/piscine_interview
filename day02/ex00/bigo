@@ -1,0 +1,2 @@
+O(N) time in the best case, O(NlogN) in average case, O(N^2) in the worst case, with N the size of linked list.
+O(1) space.

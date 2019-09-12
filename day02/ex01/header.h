@@ -1,25 +1,25 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdio.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_node {
-	char          *word;
-	struct s_node *next;
+struct s_player {
+	int   score;
+	char  *name;
 };
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-void printReverse(struct s_node *lst);
+void insertionSort(struct s_player **players);
 
 /*--------------------------------
-  ?? test function used in main 
+  ?? test function used in main
   --------------------------------*/
-struct s_node *createList(char **words, int n);
+struct s_player **genRandomPlayers(int n);
+struct s_player *createRandomPlayer(char *name);
+void printPlayers(struct s_player **players);
 
 /*--------------------------------
   &  your own other function

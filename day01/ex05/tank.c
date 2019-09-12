@@ -77,7 +77,7 @@ int tankPop(struct s_tank *tank)
 	stack->sum = stack->sum - energy;
 	stack->elem = stack->elem->next;
 	free(elem);
-	if (stack->sum == 0 && tank->n != 0)
+	if (stack->sum == 0 && tank->n > 0)
 	{
 		free(stack);
 		tank->n = tank->n - 1;

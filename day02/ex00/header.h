@@ -1,29 +1,35 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdio.h>
+# include <stdlib.h>
 
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_node {
-	char          *word;
-	struct s_node *next;
-};
+	struct s_stone {
+		int size;
+		struct s_stone *next;
+	};
+
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-void printReverse(struct s_node *lst);
+//stone is a pointer to the first
+void sortStones(struct s_stone **stone);
+
 
 /*--------------------------------
-  ?? test function used in main 
+  ?? test function used in main
   --------------------------------*/
-struct s_node *createList(char **words, int n);
+struct s_stone *genRandomStoneList(int n);
+void printStone(struct s_stone *stone);
+struct s_stone *createStone(int size);
+void exitWithMsg(char *msg);
+
 
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
 
 #endif

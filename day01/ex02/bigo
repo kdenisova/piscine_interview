@@ -1,2 +1,7 @@
+push and pop:
+O(1) time.
+O(1) space.
+
+printReverseV2:
 O(n) time.
 O(n) space for stack.
