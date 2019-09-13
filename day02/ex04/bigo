@@ -1,0 +1,2 @@
+O(n + m) time, with n the length of array and m the number of types of utensils.
+O(m) space, m the number of types of utensils.
