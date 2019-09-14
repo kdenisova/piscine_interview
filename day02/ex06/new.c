@@ -159,3 +159,21 @@ struct s_criminal **findPotentialCriminals(struct s_criminal **criminals, struct
 	new[j] = NULL;
 	return (new);
 }
+
+
+
+// struct s_node *createBST(int *arr, int n)
+// {
+// 	struct s_node *root;
+// 	int piviot;
+
+// 	if (n <= 0)
+// 		return (NULL);
+// 	piviot = n / 2;
+// 	root = createNode(arr[piviot]);
+// 	if (n == 1)
+// 		return (root);
+// 	root->left = createBST(arr, piviot);
+// 	root->right = createBST(arr + piviot + 1, n - piviot - 1);
+// 	return (root);
+// }
