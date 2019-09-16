@@ -52,6 +52,24 @@ struct s_node *lowestCommonAncestor(struct s_node *root, char *firstSpecies, cha
 	return (node);
 }
 
+int findSpecies(struct s_node *root, char *species)
+{
+	int i;
+
+	i = 0;
+	if (!root)
+		return (0);
+	if (!strcmp(root->name, species))
+		return (1);
+	while (root->children[i])
+	{
+		if (findSpecies(root->children[i], species))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 struct s_node *findParent(struct s_node *root, char *firstSpecies, char *secondSpecies)
 {
 	struct s_node *ancestor;
@@ -60,6 +78,10 @@ struct s_node *findParent(struct s_node *root, char *firstSpecies, char *secondS
 	second = 0;
 	ancestor = lowestCommonAncestor(root, firstSpecies, secondSpecies);
 	if (first && second)
+		return (ancestor);
+	if (first && findSpecies(ancestor, secondSpecies))
+		return (ancestor);
+	if (second && findSpecies(ancestor, firstSpecies))
 		return (ancestor);
 	return(NULL);
 }

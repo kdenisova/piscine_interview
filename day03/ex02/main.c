@@ -26,6 +26,9 @@ int main(void)
 	node = findParent(root, "Dinosauria", "I do not exist !");
 	if (node)
 		printf("%s\n", node->name);
+	node = findParent(root, "Life on Earth", "Eubacteria");
+	if (node)
+		printf("%s\n", node->name);
 	return (0);
 }
 

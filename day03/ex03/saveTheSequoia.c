@@ -12,38 +12,63 @@
 
 #include "header.h"
 
-int ft_left(int i)
+void swapRight(struct s_node **root, struct s_node **node)
 {
-	return (2 * i + 1);
+	struct s_node *temp;
+
+	temp = *root;
+	*root = *node;
+	*node = temp;
+	temp = (*root)->left;
+	(*root)->left = (*node)->left;
+	(*node)->left = temp;
+	temp = (*root)->right;
+	(*root)->right = (*node)->right;
+	(*node)->right = temp;
 }
 
-int ft_right(int i)
+void swapLeft(struct s_node **root, struct s_node **node)
 {
-	return (2 * i + 2);
+	struct s_node *temp;
+
+	temp = *root;
+	*root = *node;
+	*node = temp;
+	temp = (*root)->right;
+	(*root)->right = (*node)->right;
+	(*node)->right = temp;
+	temp = (*root)->left;
+	(*root)->left = (*node)->left;
+	(*node)->left = temp;
 }
 
-void 	swap(struct s_criminal **criminals)
-{
-	int i;
-
-	i = 0;
-	while (criminals[i])
-		i++;
-	return (i);
-}
-
-void	convertHeap(struct s_node **root)
+int	convertHeap(struct s_node **root)
 {
 	int n;
-	struct s_node *current;
 
-	current = *root;
-	if (current->right &&)
+	if (!(*root))
+		return (0);
+	n = 1;
+	if ((*root)->right && (*root)->right->value > (*root)->value)
+		swapRight(root, &(*root)->right);
+	if ((*root)->left && (*root)->left->value > (*root)->value)
+		swapLeft(root, &(*root)->left);
+	n = n + convertHeap(&(*root)->right) + convertHeap(&(*root)->left);
+	return (n);
 }
 
 void	saveTheSequoia(struct s_node **root)
 {
+	int n;
+	int i;
 
+	if (!root)
+		return ;
+	i = 0;
+	n = convertHeap(root);
+	while (i < n - 1)
+	{
+		convertHeap(root);
+		i++;
+	}
 }
-
-

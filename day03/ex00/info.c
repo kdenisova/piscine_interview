@@ -83,9 +83,9 @@ int getHeight(struct s_node *root)
 	int temp;
 
 	if (!root)
-		return (0);
+		return (-1);
 	temp = 0;
-	h = 1;
+	h = 0;
 	if (root->left)
 	{
 		temp = getHeight(root->left) + 1; 

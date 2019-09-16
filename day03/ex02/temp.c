@@ -71,3 +71,28 @@ struct s_node *findParent(struct s_node *root, char *firstSpecies, char *secondS
 	//printf("first = %d, second = %d\n", first, second);
 	return(NULL);
 }
+
+
+
+// static int bal;
+
+// int checkLevel(struct s_node *root, int level)
+// {
+// 	int left;
+// 	int right;
+
+// 	if (!root)
+// 		return (level);
+// 	left = checkLevel(root->left, level + 1);
+// 	right = checkLevel(root->right, level + 1);
+// 	if (abs(left - right) > 1)
+// 		bal = 0;
+// 	return (ft_max(left, right));
+// }
+
+// int isBalanced(struct s_node *root)
+// {	
+// 	bal = 1;
+// 	checkLevel(root, 0);
+// 	return (bal);
+// }

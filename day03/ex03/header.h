@@ -27,6 +27,8 @@ void printBinaryTree(struct s_node * t); //print a binary tree
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+int	convertHeap(struct s_node **root);
+void swapRight(struct s_node **root, struct s_node **node);
+void swapLeft(struct s_node **root, struct s_node **node);
 
 #endif
