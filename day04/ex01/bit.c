@@ -76,7 +76,7 @@ int toInt(char *bits)
     int d;
     int res;
 
-    i = strlen(bits) - 1;
+    i = 3;
     d = 1;
     res = 0;
     while (i >= 0)

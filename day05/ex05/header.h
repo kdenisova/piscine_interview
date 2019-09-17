@@ -1,27 +1,36 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdlib.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_bit {
-	int *arr;
-	int n;
-};
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-int	**pianoDecompress(struct s_bit *bit, int l);
+void	printUniquePermutations(char *str);
 
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-void		getPianoFile(char *filename, struct s_bit **bit, int *l);
-void		printPianoUncompressed(int **m, int l);
+
+// DICTIONNARY
+
+struct s_item {
+  char          *key;
+  int           value;
+  struct s_item *next;
+};
+
+struct s_dict {
+  struct s_item **items;
+  int           capacity; //the capacity of the array 'items'
+};
+
+struct s_dict *dictInit(int capacity);
+int dictInsert(struct s_dict *dict, char *key, int value); //return -1 if fail
+int dictSearch(struct s_dict *dict, char *key);
 
 /*--------------------------------
   &  your own other function

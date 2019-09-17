@@ -14,7 +14,5 @@
 
 int isFilled(unsigned int parkingRow)
 {
-	if ((parkingRow ^ 1) == 0)
-		return (1);
-	return (0);
+	return (parkingRow && (parkingRow & (-(~parkingRow))) == 0);
 }

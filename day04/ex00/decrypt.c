@@ -16,21 +16,31 @@ char *getSum(char *a, char *b)
 {
 	int i;
     int left;
-    int res;
 
-    i = strlen(a) - 1;
+    i = 5;
     left = 0;
     while (i >= 0)
     {
-        res = (a[i] - '0') + (b[i] - '0') + left;
-        if (res >= 2)
+        if (a[i] == '0' && b[i] == '0')
         {
-            res = res % 2;
-            left = 1;
+            a[i] = left + '0';
+            left = 0;
+        }
+        else if (a[i] != b[i])
+        {
+            if (left)
+            {
+                a[i] = '0';
+                left = 1;
+            }
+            else
+                a[i] = '1';
         }
         else
-            left = 0;
-        a[i] = res + '0';
+        {
+            a[i] = left + '0';
+            left = 1;
+        }
         i--;
     }
     return (a);
@@ -42,7 +52,7 @@ int toInt(char *bits)
     int d;
     int res;
 
-    i = strlen(bits) - 1;
+    i = 5;
     d = 1;
     res = 0;
     while (i >= 0)

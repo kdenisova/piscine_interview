@@ -15,15 +15,13 @@
 char *rightShift(char *bin, int k)
 {
 	int i;
-	int len;
 	char sign;
 
 	i = k;
 	sign = bin[0];
-	len = strlen(bin);
     if (k < 6)
 	{
-		while (i < len)
+		while (i < 6)
 		{
 			bin[i] = bin[i - k];
 			i++;
@@ -41,21 +39,19 @@ char *rightShift(char *bin, int k)
 char *leftShift(char *bin, int k)
 {
 	int i;
-	int len;
 	char sign;
 
 	sign = bin[0];
-	len = strlen(bin);
     if (k < 6)
 	{
 		i = 0;
-		while (i + k < len)
+		while (i + k < 6)
 		{
 			bin[i] = bin[i + k];
 			i++;
 		}
 	}
-	i = len - 1;
+	i = 5;
 	while (i >= 0 && k > 0)
 	{
 		bin[i] = '0';
@@ -71,7 +67,7 @@ int toInt(char *bits)
     int d;
     int res;
 
-    i = strlen(bits) - 1;
+    i = 5;
     d = 1;
     res = 0;
     while (i >= 1)

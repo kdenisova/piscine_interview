@@ -1,27 +1,32 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdlib.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_bit {
-	int *arr;
-	int n;
-};
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-int	**pianoDecompress(struct s_bit *bit, int l);
-
+void printPossibleSlices(int pizzaSize);
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-void		getPianoFile(char *filename, struct s_bit **bit, int *l);
-void		printPianoUncompressed(int **m, int l);
+
+// DYNAMIC ARRAY
+
+struct s_array {
+	int *content;
+	int length;
+	int sum;
+	int capacity;
+};
+
+struct s_array *arrayInit(void);
+int     arrayAppend(struct s_array *arr, int number);
+struct s_array *arrayClone(struct s_array *arr);
+void    arrayPrint(struct s_array *arr);
 
 /*--------------------------------
   &  your own other function

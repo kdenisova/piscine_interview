@@ -1,27 +1,27 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdlib.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
-struct s_bit {
-	int *arr;
-	int n;
+struct s_prices
+{
+	double *items;
+	int length;
 };
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-int	**pianoDecompress(struct s_bit *bit, int l);
-
+double bestPrice(int pizzaSize, double *prices);
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
-void		getPianoFile(char *filename, struct s_bit **bit, int *l);
-void		printPianoUncompressed(int **m, int l);
+
+// PARSING
+
+struct s_prices *readList();
 
 /*--------------------------------
   &  your own other function
