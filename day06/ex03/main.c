@@ -7,20 +7,24 @@
 
 int main(int ac, char **av)
 {
-	char *word = NULL;
+	int elements;
+	int minPercentage;
 
-	if (ac >= 2){
-		word = av[1];
+	if (ac >= 3){
+		elements = atoi(av[1]);
+		minPercentage = atoi(av[2]);
 	}
-
+	else {
+		printf("Usage: ./minPersons elements minPercentage\n");
+		return (0);
+	}
 	/*-------------------
 	launch your test here
 	--------------------*/
-	printPermutations(word);
+	// printf("%d\n", minPersons(elements, minPercentage));
 
 	return (0);
 }
-
 
 
 // Function used for the test

@@ -7,17 +7,24 @@
 
 int main(int ac, char **av)
 {
-	char *word = NULL;
+	char *sequence = NULL;
+	char *palindrome;
+	int nDelete = 0;
 
-	if (ac >= 2){
-		word = av[1];
-	}
+	if (ac >= 2)
+		sequence = av[1];
+	if (ac >= 3)
+		nDelete = atoi(av[2]);
+	palindrome = NULL;
 
 	/*-------------------
 	launch your test here
 	--------------------*/
-	printPermutations(word);
-
+	
+	// palindrome = findPalindrome(sequence, nDelete);
+	// if (palindrome)
+	// 	printf("%s\n", palindrome);
+	
 	return (0);
 }
 
@@ -25,4 +32,3 @@ int main(int ac, char **av)
 
 // Function used for the test
 // Don't go further :)
-

@@ -1,0 +1,2 @@
+O(k * n!) time, with k the number of tabels and n the number of people.
+O(k) space, with k the number of tabels.

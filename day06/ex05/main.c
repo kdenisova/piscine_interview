@@ -7,16 +7,23 @@
 
 int main(int ac, char **av)
 {
-	char *word = NULL;
+	int nStairs;
+	int nPunch;
+	int nephewStair;
 
-	if (ac >= 2){
-		word = av[1];
+	if (ac >= 4){
+		nStairs = atoi(av[1]);
+		nPunch = atoi(av[2]);
+		nephewStair = atoi(av[3]);
 	}
-
+	else {
+		printf("Usage: ./helpNephew nStairs nPunch nephewStair\n");
+		return (0);
+	}
 	/*-------------------
 	launch your test here
 	--------------------*/
-	printPermutations(word);
+	// printf("%.2lf\n", probaNephewWillLive(nStairs, nPunch, nephewStair));
 
 	return (0);
 }

@@ -7,16 +7,26 @@
 
 int main(int ac, char **av)
 {
-	char *word = NULL;
+	int *arr;
+	int n;
+	int dist;
 
-	if (ac >= 2){
-		word = av[1];
+	if (ac >= 4){
+		dist = atoi(av[1]);
+		n = ac-2;
+		arr = malloc(sizeof(int) * (n));
+		for (int i = 2; i < ac; i++){
+			arr[i-2] = atoi(av[i]);
+		}
 	}
-
+	else {
+		printf("Usage: ./distance dist nb1 nb2 ...\n");
+		return (0);
+	}
 	/*-------------------
 	launch your test here
 	--------------------*/
-	printPermutations(word);
+	printf("%lf\n", probaDistance(dist, arr, n));
 
 	return (0);
 }

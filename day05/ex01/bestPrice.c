@@ -40,6 +40,6 @@ double bestPrice(int pizzaSize, double *prices)
 	double max;
 
 	max = 0;
-	possiblePrice(pizzaSize, prices, &max);
+	possiblePrice(pizzaSize, prices, &max, 0);
 	return (max);
 }

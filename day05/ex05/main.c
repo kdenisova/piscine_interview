@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	// printUniquePermutations(word);
+	printUniquePermutations(word);
 
 	return (0);
 }

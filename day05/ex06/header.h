@@ -1,39 +1,27 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+# include <stdlib.h>
 # include <string.h>
-# include <stdio.h>
-
 /*--------------------------------
   !! required structure
   --------------------------------*/
+struct s_people
+{
+	char *name; 
+	int time; //in minute
+};
 
 /*--------------------------------
   :) function you must implement
   --------------------------------*/
-void	printUniquePermutations(char *str);
-
+int isPossible(struct s_people **people, int nbTable, int totalTime);
 
 /*--------------------------------
   ?? test function used in main 
   --------------------------------*/
+struct s_people **readGuestList();
 
-// DICTIONNARY
-
-struct s_item {
-  char          *key;
-  int           value;
-  struct s_item *next;
-};
-
-struct s_dict {
-  struct s_item **items;
-  int           capacity; //the capacity of the array 'items'
-};
-
-struct s_dict *dictInit(int capacity);
-int dictInsert(struct s_dict *dict, char *key, int value); //return -1 if fail
-int dictSearch(struct s_dict *dict, char *key);
 
 /*--------------------------------
   &  your own other function

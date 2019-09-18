@@ -1,2 +1,2 @@
 O(n!) time for all possible permitations.
-O(n) space for recurtion calls.
+O(n!) space for hash table.

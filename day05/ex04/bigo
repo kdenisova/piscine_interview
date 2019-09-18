@@ -1,0 +1,2 @@
+O(n * n!) time for all possible permitations.
+O(n) space for recurtion calls.
