@@ -7,7 +7,7 @@
 
 int main(int ac, char **av)
 {
-        int pizzaSize = 3;
+        int pizzaSize = 56;
         struct s_prices *pricesCont; //just a container which store the array of prices and it's associated length
 
         pricesCont = readList();
@@ -17,7 +17,7 @@ int main(int ac, char **av)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	//printf("%d : %.2f\n", pizzaSize, bestPrice(pizzaSize, pricesCont->items));
+	printf("%d : %.2f\n", pizzaSize, bestPrice(pizzaSize, pricesCont->items));
 
 	return (0);
 }

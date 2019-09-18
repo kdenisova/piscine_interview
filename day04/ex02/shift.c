@@ -64,19 +64,19 @@ char *leftShift(char *bin, int k)
 int toInt(char *bits)
 {
 	int i;
-    int d;
+    int p;
     int res;
 
     i = 5;
-    d = 1;
+    p = 1;
     res = 0;
     while (i >= 1)
     {
-        res += (bits[i] - '0') * d;
-		d = d << 1;
+        res += (bits[i] - '0') * p;
+		p = p << 1;
         i--;
     }
 	if (bits[0] == '1')
-		res -= d;
+		res -= p;
     return (res);
 }

@@ -18,7 +18,7 @@ int rightmostCar(unsigned int parkingRow)
     int pos;
     int one;
 
-    if (parkingRow == 0)
+    if (!parkingRow)
         return (-1);
     pos = 0;
     one = 1;

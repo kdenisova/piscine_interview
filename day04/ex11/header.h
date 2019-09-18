@@ -1,7 +1,6 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <math.h>
 
 /*--------------------------------
   !! required structure

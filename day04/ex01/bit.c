@@ -73,16 +73,16 @@ char *getOr(char *a, char *b)
 int toInt(char *bits)
 {
 	int i;
-    int d;
+    int p;
     int res;
 
     i = 3;
-    d = 1;
+    p = 1;
     res = 0;
     while (i >= 0)
     {
-        res += (bits[i] - '0') * d;
-		d = d << 1;
+        res += (bits[i] - '0') * p;
+		p = p << 1;
         i--;
     }
     return (res);

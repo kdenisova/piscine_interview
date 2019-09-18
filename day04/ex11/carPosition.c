@@ -16,7 +16,7 @@ int carPosition(unsigned int parkingRow)
 {
     int pos;
 
-    if (parkingRow == 0)
+    if (!parkingRow)
         return (-1);
     pos = 0;
     while (parkingRow && (parkingRow % 2 == 0))
