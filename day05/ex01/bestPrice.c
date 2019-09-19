@@ -12,27 +12,19 @@
 
 #include "header.h"
 
-// double possiblePrice(int pizzaSize, double *prices, double *max)
-// {
-// 	double current;
-
-//     if (!pizzaSize)
-// 		return (0);
-//     for (int i = pizzaSize; i > 0; i--)
-// 	{
-// 		current = prices[i] + possiblePrice(pizzaSize - i, prices, max);
-// 		if (*max < current)
-// 			*max = current;
-// 	}
-// 	return (current);
-// }
-
-void possiblePrice(int pizzaSize, double *prices, double *max, double current)
+double possiblePrice(int pizzaSize, double *prices, double *max)
 {
-    if (!pizzaSize && *max < current)
-		*max = current;
+	double current;
+
+    if (!pizzaSize)
+		return (0);
     for (int i = pizzaSize; i > 0; i--)
-		possiblePrice(pizzaSize - i, prices, max, current + prices[i]);
+	{
+		current = prices[i] + possiblePrice(pizzaSize - i, prices, max);
+		if (*max < current)
+			*max = current;
+	}
+	return (current);
 }
 
 double bestPrice(int pizzaSize, double *prices)
@@ -40,6 +32,6 @@ double bestPrice(int pizzaSize, double *prices)
 	double max;
 
 	max = 0;
-	possiblePrice(pizzaSize, prices, &max, 0);
+	possiblePrice(pizzaSize, prices, &max);
 	return (max);
 }

@@ -14,17 +14,18 @@
 
 double probaDistance(int dist, int *locations, int n)
 {
-	double prob;
+	double prob = 0;
+	double total = 0;
 
-	prob = 0;
-	for (int i = n - 1; i >= 0; i--)
+	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < i; j++)
+		for (int j = i + 1; j < n; j++)
 		{
-			if (locations[i] - locations[j] > dist)
+			total++;
+			if (locations[i] - locations[j] > dist || locations[j] - locations[i] > dist)
 				prob++;
 		}
 	}
-	prob = prob / n;
+	prob = prob / total;
 	return (prob);
 }

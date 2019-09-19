@@ -2,7 +2,7 @@
 # define HEADER_H
 
 # include <stdlib.h>
-# include <string.h>
+
 /*--------------------------------
   !! required structure
   --------------------------------*/
@@ -26,6 +26,6 @@ struct s_people **readGuestList();
 /*--------------------------------
   &  your own other function
   --------------------------------*/
-
+int checkPossible(struct s_people **people, int *tables, int nbTable, int totalTime, int pos);
 
 #endif

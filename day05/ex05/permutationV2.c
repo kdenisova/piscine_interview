@@ -58,6 +58,5 @@ void	printUniquePermutations(char *str)
 	struct s_dict *dict;
 
 	dict = dictInit(ft_fact(strlen(str)));
-	if (str)
-		permutations(dict, str, strlen(str) - 1, 0);
+	permutations(dict, str, strlen(str) - 1, 0);
 }

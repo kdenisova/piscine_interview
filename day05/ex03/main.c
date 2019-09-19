@@ -15,7 +15,7 @@ int main(void)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	sinkIsland(map, 5, 3);
+	sinkIsland(map, 0, 3);
 	printMap(map);
 
 	return (0);

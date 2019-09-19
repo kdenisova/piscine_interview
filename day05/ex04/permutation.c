@@ -36,24 +36,7 @@ void	permutations(char *str, int len, int pos)
     }
 }
 
-// void	permutations(char *str, int len, int pos)
-// {
-//     if (pos == 0)
-//     {
-//         printf("%s\n", str);
-//         return ;
-//     }
-        
-//     for (int i = pos; i >= 0; i--)
-//     {
-//         swap(str, i, pos);
-//         permutations(str, len, pos - 1);
-//         //swap(str, i, pos);
-//     }
-// }
-
 void	printPermutations(char *str)
 {
-    if (str)
-        permutations(str, strlen(str) - 1, 0);
+    permutations(str, strlen(str) - 1, 0);
 }

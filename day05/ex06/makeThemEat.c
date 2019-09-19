@@ -32,9 +32,10 @@ int checkPossible(struct s_people **people, int *tables, int nbTable, int totalT
 int isPossible(struct s_people **people, int nbTable, int totalTime)
 {
 	int ret;
-	int *tables = (int *)malloc(sizeof(int) * (nbTable + 1));
+	int *tables = (int *)malloc(sizeof(int) * nbTable);
 	
-	memset(tables, 0, nbTable + 1);
+	for (int i = 0; i < nbTable; i++)
+		tables[i] = 0;
 	ret = checkPossible(people, tables, nbTable, totalTime, 0);
 	free(tables);
 	return (ret);

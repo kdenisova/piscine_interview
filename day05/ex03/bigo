@@ -1,2 +1,2 @@
-O(n) time.
+O(n * n) time, for all matrix.
 O(1) space.
