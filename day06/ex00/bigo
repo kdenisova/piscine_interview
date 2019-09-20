@@ -1,0 +1,2 @@
+O(n ^ 2) time, with n the number of locations.
+O(1) space.

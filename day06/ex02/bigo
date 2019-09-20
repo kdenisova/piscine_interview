@@ -1,0 +1,2 @@
+O(2 ^ n) time, with n the number of games.
+O(1) space.

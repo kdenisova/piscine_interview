@@ -22,8 +22,8 @@ int main(int ac, char **av)
 	launch your test here
 	--------------------*/
 
-	// count = selectHotspots(hotspots);
-	// printf("Number of hotspots : %d\n", count);
+	count = selectHotspots(hotspots);
+	printf("Number of hotspots : %d\n", count);
 
 	return (0);
 }

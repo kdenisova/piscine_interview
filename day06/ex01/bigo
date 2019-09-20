@@ -1,0 +1,2 @@
+O(n) time, with n the number of hotspots.
+O(1) space.
