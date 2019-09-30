@@ -1,2 +1,2 @@
 O(n) time, with n the number of elements in the array.
-O(k) space, with k the interval.
+O(k) space, with k the size of window.

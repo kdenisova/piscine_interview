@@ -24,9 +24,9 @@ int main(int ac, char **av)
 	/*-------------------
 	launch your test here
 	--------------------*/
-	// sellers = closestSellers(graph, place);
+	sellers = closestSellers(graph, place);
 
-	// printSellers(sellers);
+	printSellers(sellers);
 
 	return (0);
 }
